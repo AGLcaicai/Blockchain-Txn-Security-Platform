@@ -2,8 +2,8 @@
 <center>A Blockchain Wallet Transaction Security Platform</center>
 
 ## Description
-A Secure Scanning Platform for Blockchain Wallet Transactions.
-**Porject Report: [Link](/static/pic/Project%20Dissertation%20Report.pdf)**
+A Secure Scanning Platform for Blockchain Wallet Transactions. <br>
+**Porject Report: [Link](/static/pic/Project%20Dissertation%20Report.pdf)**<br>
 Only support **Ethereum** right now
 
 ### Main Features
@@ -15,7 +15,7 @@ Only support **Ethereum** right now
     -   Data Source: [Slither](https://github.com/crytic/slither)
 
 ### Example Vedio
-<vedio src='/static/pic/example.mp4'></vedio>
+Please Check in the Path: `static/pic/example_vedio.mp4`
 
 ## Running Environment
 1.  Upper than *Python 3.10*
