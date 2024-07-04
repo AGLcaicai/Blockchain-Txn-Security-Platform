@@ -1,0 +1,86 @@
+p{
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-size: 30px;
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.field{
+    padding: 0rem 15rem;
+}
+
+.input{
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+}
+.input::placeholder {
+    text-align: center;
+    color: black;
+}
+.fund_flow{
+    width: auto;
+    height: 35rem;
+    margin: 0 auto;
+}
+
+.goldenline{
+    width: auto;
+    height: 0px;
+    top: 0;            
+    bottom: 0;            
+    left: 0;            
+    right: 0;            
+    margin: auto; 
+    border: 3px solid;
+    border-image: linear-gradient(90deg, rgba(66, 41, 130, 0), rgb(255 136 0), rgba(66, 41, 130, 0)) 0 50 100;
+}
+.txn_table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.txn_table th{
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    padding: 1rem;
+    font-weight: bold;
+    width: 25%;
+
+}
+.txn_table tr{
+    text-align: center;
+}
+.txn_table td{
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    padding: 1rem;
+    font-weight: 600;
+    width: 25%;
+}
+a{
+    color: #00e5ff;
+    text-decoration: none;
+}
+.txn_table td a:hover {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: #199ffa;
+}
+.txn_table tr td:nth-child(1){
+    max-width: 15rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #00e5ff;
+}
+.txn_table tr td:nth-child(2), .txn_table tr td:nth-child(3){
+    color: black;
+    max-width: 10rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

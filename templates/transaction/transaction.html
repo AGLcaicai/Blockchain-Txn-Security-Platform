@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/transaction.css') }}">
+
+<p>Ethereum Transaction Analysis</p>
+
+<form action="/transaction/query" method="post">
+    <div class="field is-grouped">
+        <p class="control is-expanded">
+            <input class="input is-rounded" name="query" type="text" placeholder="Input Your Ethereum Wallet Address" required>
+        </p>
+        <p class="control">
+            <input class="button is-black is-rounded" type="submit" value="Query" placeholder="Query">
+        </p>
+    </div>
+</form>
+
+{% if graph %}
+    <p>Your Fund flow (You can hover to each point)</p>
+
+    <div id="fund_flow" class="block is-centered fund_flow" >
+    
+    </div>
+
+    <script>
+        var chartData = {{ graph | safe }};
+        var chart = echarts.init(document.getElementById('fund_flow'));
+        chart.setOption(chartData);
+    </script>
+{% endif %}
+
+<div class="block is-centered goldenline"></div>
+
+
+{% if results %}
+    <p>Latest 10 Transaction Histories</p>
+    <div class="table-container">
+        <table class="is-fullwidth txn_table">
+            
+                <thead>
+                    <tr>
+                    <th>TXNs Hash</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Safety</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in results %}
+                    <tr>
+                        <td><a href="https://etherscan.io/tx/{{ data.hash }}">{{ data.hash }}</a></td>
+                        <td>{{ data.from }}</td>
+                        <td>{{ data.to }}</td>
+                        {% if data.safety == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        
+        </table>
+    </div>
+{% endif %}
+
+{% endblock %}

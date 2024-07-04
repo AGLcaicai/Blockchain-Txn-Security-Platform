@@ -1,0 +1,8 @@
+Flask
+flask
+requests
+markdown
+slither-analyzer
+solc-select
+pyecharts
+python-dotenv

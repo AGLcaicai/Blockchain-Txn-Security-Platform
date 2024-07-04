@@ -1,0 +1,89 @@
+p{
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-size: 30px;
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.field{
+    padding: 0rem 15rem;
+}
+
+.input{
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+}
+.input::placeholder {
+    text-align: center;
+    color: black;
+}
+
+.goldenline{
+    width: auto;
+    height: 0px;
+    top: 0;            
+    bottom: 0;            
+    left: 0;            
+    right: 0;            
+    margin: auto; 
+    border: 3px solid;
+    border-image: linear-gradient(90deg, rgba(66, 41, 130, 0), rgb(255 136 0), rgba(66, 41, 130, 0)) 0 50 100;
+}
+
+.txn_table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.txn_table th{
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    padding: 1rem 0rem;
+    font-weight: bold;
+    width: 50%;
+}
+.txn_table tr{
+    text-align: center;
+}
+.txn_table td{
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    padding: 1rem 0rem;
+    font-weight: 600;
+    width: 50%;
+}
+.contract_report{
+    text-align: center;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+}
+a{
+    color: #00e5ff;
+    text-decoration: none;
+}
+a:hover {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: #199ffa;
+}
+.scan_result{
+    font-size: 25px;
+    font-weight: 500;
+    padding-bottom: 0rem;
+}
+.scan_result:nth-child(6){
+    color: #00FF0A;
+}
+
+.scan_result:nth-child(7){
+    color: #FAFF04;
+}
+
+.scan_result:nth-child(8){
+    color: #FF0000;
+}

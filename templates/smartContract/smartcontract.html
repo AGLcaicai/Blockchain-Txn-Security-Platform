@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/smartcontract.css') }}">
+
+<p>Smart contract security detection</p>
+
+<form action="/smartcontract/scan" method="post">
+    <div class="field is-grouped">
+        <p class="control is-expanded">
+            <input class="input is-rounded" name="scan" type="text" placeholder="Input Ethereum Smart Contract Address" required>
+        </p>
+        <p class="control">
+            <input class="button is-black is-rounded" type="submit" value="Scan" placeholder="Scan">
+        </p>
+    </div>
+</form>
+
+{% if smartcontract %}
+    <p>Scan Results For Users & Traders</p> 
+    <p>Data Source From: {{ smartcontract.data_source }}</p> 
+
+    <div class="table-container">
+        <table class="is-fullwidth txn_table">
+            <thead>
+                <tr>
+                <th>Risk Type</th>
+                <th>Result</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Honeypot</td>
+                    {% if smartcontract.is_honeypot == "Safe" %}
+                        <td style="color: #00FF29;">Safe</td>
+                    {% else %}
+                        <td style="color: #FF0000;">Dangerous</td>
+                    {% endif %}
+                </tr>
+
+                <tr>
+                    <td>Blacklisted</td>
+                    {% if smartcontract.is_blacklisted == "Safe" %}
+                        <td style="color: #00FF29;">Safe</td>
+                    {% else %}
+                        <td style="color: #FF0000;">Dangerous</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>Open Source</td>
+                    {% if smartcontract.is_open_source == "Safe" %}
+                        <td style="color: #00FF29;">Safe</td>
+                    {% else %}
+                        <td style="color: #FF0000;">Dangerous</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>Proxy Contract</td>
+                    {% if smartcontract.is_proxy == "Safe" %}
+                        <td style="color: #00FF29;">Safe</td>
+                    {% else %}
+                        <td style="color: #FF0000;">Dangerous</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>Trade Pausable</td>
+                    {% if smartcontract.transfer_pausable == "Safe" %}
+                        <td style="color: #00FF29;">Safe</td>
+                    {% else %}
+                        <td style="color: #FF0000;">Dangerous</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>Trade Cooldown</td>
+                    {% if smartcontract.trading_cooldown == "Safe" %}
+                        <td style="color: #00FF29;">Safe</td>
+                    {% else %}
+                        <td style="color: #FF0000;">Dangerous</td>
+                    {% endif %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <p>This contract may be 
+        {% if smartcontract.safety == "Safe" %}
+            <span style="color: #00FF29;">Safe</span>
+        {% else %}
+            <span style="color: #FF0000;">Dangerous</span>
+        {% endif %}
+    </p> 
+    <p>If you need to interaction or trade</p>
+{% endif %}
+
+<div class="block is-centered goldenline"></div>
+
+{% if scan_result or scan_report %}
+
+    <p>For Developer (Static Analyzer: <a href="https://github.com/crytic/slither">Slither</a>)</p>
+
+    <div class="block contract_report">
+        {% for line in scan_result %}
+            <p class="scan_result">{{ line }}</p>
+        {% endfor %}
+    </div>
+
+
+    <a href="{{scan_report}}" style="font-size: 25px;">Click Here to Check <br> Contract Security Report</a>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Blockchain Wallet Security Transaction Platform</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">    
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+        <link rel="stylesheet" href="../static/css/index.css">
+    </head>
+
+    <body>
+        <section class="is-fullheight">
+
+            <div class="hero-head">
+
+                <nav class="navbar is-transparent" >
+                    <div class="navbar-brand">
+                      <a class="navbar-item" href="{{ url_for('transaction.transaction') }}">
+                        Blockchain Wallet <br> Transaction Security Platform
+                      </a>
+                  
+                      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                      </a>
+                    </div>
+
+                    <div class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item" href="{{ url_for('transaction.transaction') }}">
+                                Transaction Analysis
+                            </a>
+                            <a class="navbar-item" href="{{ url_for('address.address') }}">
+                                Scam Detection
+                            </a>
+                            <a class="navbar-item" href="{{ url_for('smartContract.smartContract') }}">
+                                Smart Contract
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+    
+            <div class="hero-body">
+                <div class="container has-text-centered">
+
+                    <div class="notification is-primary is-light" style="font-size: large; font-weight: 600;">
+                        <button class="delete"></button>
+                        The platform only need your Ethereum wallet address.<br>
+                        All data comes from the Ethereum blockchain public data and public databases.<br>
+                        The platform <strong style="color: red;">WILL NOT</strong> have any data collection or interaction with your wallet.
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                        (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                            const $notification = $delete.parentNode;
+
+                            $delete.addEventListener('click', () => {
+                            $notification.parentNode.removeChild($notification);
+                            });
+                        });
+                        });
+                    </script>
+
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+
+        </section>
+                
+    </body>
+
+
+
+</html>

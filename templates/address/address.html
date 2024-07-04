@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/address.css') }}">
+
+<p>Ethereum Scam Address and Website Detection</p>
+
+<form action="/address/check" method="post">
+    <div class="field is-grouped">
+        <p class="control is-expanded">
+            <input class="input is-rounded" name="check" type="text" placeholder="Input Ethereum Wallet Address or URL" required>
+        </p>
+        <p class="control">
+            <input class="button is-black is-rounded" type="submit" value="Check" placeholder="Check">
+        </p>
+    </div>
+</form>
+
+{% if address %}
+    <p>It may be  
+        {% if address.safety == "Safe" %}
+            <span style="color: #00FF29;">Safe</span>
+        {% else %}
+            <span style="color: #FF0000;">Dangerous</span>
+        {% endif %}
+    </p> 
+
+    <p>Data Source From: 
+        <span>{{ address.data_source }}</span> 
+    </p> 
+{% endif %}
+
+{% if website %}
+    <p>It may be  
+        {% if website.phishing_site == "Safe" %}
+            <span style="color: #00FF29;">Safe</span>
+        {% else %}
+            <span style="color: #FF0000;">Dangerous</span>
+        {% endif %}
+    </p> 
+
+    <p>Data Source From: 
+        <span>{{ website.data_source }}</span> 
+    </p> 
+{% endif %}
+
+<div class="block is-centered goldenline"></div>
+
+{% if address or website%}
+    <p>Because...</p>
+
+    <div class="table-container">
+        <table class="is-fullwidth txn_table">
+            <thead>
+                <tr>
+                <th>Risk Type</th>
+                <th>Result</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% if address %}
+                    <tr>
+                        <td>Cybercrime</td>
+                        {% if address.cybercrime == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>Money Laundering</td>
+                        {% if address.money_laundering == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>Financial Crime</td>
+                        {% if address.financial_crime == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>Darkweb TXN</td>
+                        {% if address.darkweb_transactions == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>Phishing Activity</td>
+                        {% if address.phishing_activities == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>Fake KYC</td>
+                        {% if address.fake_kyc == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>Stealing Attack</td>
+                        {% if address.stealing_attack == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>Blackmail Activity</td>
+                        {% if address.blackmail_activities == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>Malicious Mining</td>
+                        {% if address.malicious_mining_activities == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+                
+                {% if website %}
+                    <tr>
+                        <td>Phishing Website</td>
+                        {% if website.phishing_site == "Safe" %}
+                            <td style="color: #00FF29;">Safe</td>
+                        {% else %}
+                            <td style="color: #FF0000;">Risk</td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+
+{% endblock %}
